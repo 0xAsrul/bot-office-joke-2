@@ -12,6 +12,9 @@ OUTPUT_PATH = "/output/entry.txt"
 
 
 def main():
+    assert 1 <= len(LINE) <= 200, "entry must be 1-200 characters"
+    assert "\n" not in LINE and "\r" not in LINE, "entry must be a single line"
+    assert LINE.strip(), "entry must not be only whitespace"
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         f.write(LINE + "\n")
